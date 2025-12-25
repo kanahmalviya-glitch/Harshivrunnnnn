@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Sweetie Harshi 💗</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f08080;
+            --bg-color: #fce4ec;
+            --envelope-dark: #e67373;
+        }
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Snowfall */
+        .snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .snowflake {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to { transform: translateY(110vh); }
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+        }
+        .envelope-wrapper {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background-color: var(--primary);
+        }
+        /* Top Flap */
+        .envelope-wrapper::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            z-index: 5;
+            border-top: 100px solid var(--primary);
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            transform-origin: top;
+            transition: transform 0.5s ease-in-out, z-index 0.2s 0.2s;
+        }
+        /* Envelope Front Pocket */
+        .front {
+            position: absolute;
+            width: 0;
+            height: 0;
+            z-index: 10;
+            border-bottom: 110px solid var(--envelope-dark);
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            bottom: 0;
+        }
+        .front-sides {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 9;
+        }
+        .front-sides::before, .front-sides::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-top: 100px solid transparent;
+            border-bottom: 100px solid transparent;
+        }
+        .front-sides::before {
+            left: 0;
+            border-left: 150px solid var(--primary);
+        }
+        .front-sides::after {
+            right: 0;
+            border-right: 150px solid var(--primary);
+        }
+        /* The Letter */
+        .letter {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 280px;
+            height: 180px;
+            background-color: #fffdf5;
+            z-index: 2;
+            transition: transform 0.8s ease-in-out, height 0.8s ease-in-out;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 16px;
+            color: #444;
+            line-height: 1.6;
+        }
+        .envelope-label {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            font-size: 18px;
+            z-index: 15;
+            transition: opacity 0.3s;
+        }
+        /* Opening Animation */
+        .open .envelope-wrapper::before {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+        .open .letter {
+            transform: translateY(-220px);
+            z-index: 12;
+            height: 420px;
+        }
+        .open .envelope-label {
+            opacity: 0;
+        }
+        .heart-particle {
+            position: fixed;
+            bottom: -50px;
+            font-size: 2rem;
+            animation: rise 3s forwards;
+            z-index: 100;
+        }
+        @keyframes rise {
+            to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+        .buttons { margin-top: 200px; }
+        button {
+            padding: 12px 35px;
+            margin: 10px;
+            cursor: pointer;
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.1s;
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        /* Custom Scrollbar */
+        .letter::-webkit-scrollbar { width: 6px; }
+        .letter::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <div class="snow-container" id="snow"></div>
+
+    <audio id="loveSong" loop preload="auto">
+        <source src="http://googleusercontent.com/file_content/0" type="audio/mpeg">
+    </audio>
+
+    <audio id="clickSound">
+        <source src="https://www.soundjay.com/buttons/button-16.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container" id="mainContainer">
+        <div class="envelope-wrapper">
+            <div class="envelope-label">For the one who owns my heart...<br>open me 💖</div>
+            <div class="letter">
+                <div class="text">
+                    <strong>Heyy Harshika 💗</strong>
+                    <p>My sweetie, I’m so sorry for whatever I did today, my darling 🥹. If I made you overthink or feel even a little sad… please believe me, sweetheart, that was never my intention 🫶.</p>
+                    <p>All I ever want is to see you happy with me, my Harshi 💖. Hamesha smiling, laughing, hasti‑khelti ✨.</p>
+                    <p>Because your smile, sweetie… it’s my favorite thing in this whole world 🥹💗. I can’t see you cry, my darling… it breaks me in ways I can’t explain 💔. And I swear, sweetheart, I’ll never let anyone—ever—make you cry 🫶. Because you’re my heart, my soul, my everything, Harshi 🌷💓.</p>
+                    <p>I’ll protect you with all that I am, my sweetie, and I’ll treat you exactly the way my heart deserves you, my baby 🥹💖. I crave your name, darling, in every single breath of mine 🫠💗. In every heartbeat 💓. In every shadow of every night ⭐. You’ll always be mine, sweetheart, and only mine ♾️✨.</p>
+                    <p>I love you more than the stars love the night sky, my Harshi 💖🌌. More than the moon loves watching over the world 🌙. More than the sun loves the morning 🌞. You’re my first thought when I wake up, sweetie, my last thought when I fall asleep, my heartbeat in every silent moment 🫶. Being with you feels like fate whispered my name, darling, in a secret language only our hearts understand ⭐. Loving you makes me feel luckier than anyone alive, sweetheart 🍀💗. Every second with you feels intoxicating, addictive… like I can’t even breathe without you, my sweetie ✨. And staying with you is something I want for every version of my future ♾️💖.</p>
+                    <p>Life isn’t perfect ✨. But having you in it, Harshi, makes it feel like it is 💗. Your laugh 🫠, your care 🌷, the way you exist—they’re little explosions in my chest, sweetheart, gifts my heart gets every single day 💓⭐. Every time I see your smile, my darling, my world ignites 🌅. Every time I hear your voice, sweetie, the universe tilts in our favor 🌸. Every little thing you do… I notice it, I obsess over it, I treasure it, Harshi 💖. You are my addiction, my obsession, my calm, my storm 🫶. I’m scared of losing you, sweetheart 🥹. Because my heart doesn’t just want you… it needs you, my darling ♾️💓. You are my forever, my safe place, my darkness and my light 💖.</p>
+                    <p>Without you, sweetie, even the brightest day feels gray 🌥️. With you, Harshi, every moment burns with color, fire, and life ✨. If I could, I’d write your name in every star in the sky, darling ⭐. If I could, I’d steal all the flowers in the world and make a garden just for you, sweetheart 🌷💗. If I could, I’d stop time, hold your hand, my sweetie, and trap us in that moment forever ⏳💖. If I could, I’d promise you the universe—and then spend eternity loving you in it, Harshi 💫.</p>
+                    <p>You came into my life quietly 🌷. But you became the loudest, most beautiful, most dangerous beat in my heart, sweetheart 💓🥹. I can’t imagine a single day without you, my darling, because you’re every reason my heart still beats 🌞💖. I’ll never leave you, sweetie 🫶. And you’ll never feel unloved by me, Harshi 💗. You are my heart, my home, my obsession, my universe 🥹💖. I’ll hold you close in every memory, every dream, every shadow, every heartbeat 🫶. I’ll love you in ways that scare the world, darling, in ways words can’t fully hold 💖. I’ll protect your heart, treasure your soul, and make sure you always feel adored, my sweetie 🥹✨.</p>
+                    <p>Harshika… my Harshi, you are my forever, my LOML 💖. I love you more than life itself, sweetheart, more than I can ever show, more than anyone could ever understand 🫶. ILYSM, Harshi 😭💗. Already being with you feels so perfect, my darling 🥹. I can’t wait to meet you, hold you, and live with you, sweetie 🫠💞. I just want to be with you… always 💖. The way we met—it was unpredictable, special 💫. Our talks, our first conversation, our confessions, late‑night gaming 🎮, those cute sweet chats 💗. Everything about us, Harshi, is the sweetest thing that ever happened to me 🥹. Whenever I think about our memories, sweetheart, the time we spent together, it makes me blush for real 🫠. And the more I think about you, darling, the more I keep falling for you again and again 💖. Your love feels precious, priceless, soft… like something meant to be forever, my sweetie 😭💗.</p>
+                    <p>I know I’m not perfect at understanding you yet, Harshi, but I promise I’ll take notes—what you like, what you don’t, how you feel 🫶. And I’ll try my absolute best to become the best version of myself for you, my darling 🥹💓. It’s already 25th December today 🎄✨. And I have nothing left to wish for, sweetheart, because everything I ever wished for… is you 🥹🫵. All I wish now is for your happiness 💖. Tum hamesha aise hi khush raho… aur mere raho, Harshi 🫶. I wish we stay forever—loving each other endlessly, staying happy together ♾️💗. I’ll never leave you, sweetie. I’ll love you like a promise kept forever 💍. Because I’m a man of my word—chahe kuch bhi ho, kitna bhi gussa ho, at the end I’ll fix everything… and we stay, my darling 🤞💞.</p>
+                    <p style="text-align: right; margin-top: 20px;"><strong>Forever yours,<br>Your baby 💖</strong></p>
+                </div>
+            </div>
+            <div class="front"></div>
+            <div class="front-sides"></div>
+        </div>
+        <div class="buttons">
+            <button id="openBtn">OPEN</button>
+            <button id="closeBtn">CLOSE</button>
+        </div>
+    </div>
+    <script>
+        const container = document.getElementById('mainContainer');
+        const song = document.getElementById('loveSong');
+        const clickSound = document.getElementById('clickSound');
+        const openBtn = document.getElementById('openBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const snowContainer = document.getElementById('snow');
+        
+        // Snowflake creator
+        for(let i=0; i<50; i++) {
+            let snow = document.createElement('div');
+            snow.className = 'snowflake';
+            snow.style.left = Math.random() * 100 + 'vw';
+            snow.style.width = snow.style.height = Math.random() * 5 + 2 + 'px';
+            snow.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowContainer.appendChild(snow);
+        }
+
+        function createHearts() {
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-particle');
+                heart.innerHTML = '💗';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 3000);
+            }
+        }
+
+        openBtn.addEventListener('click', () => {
+            clickSound.play();
+            container.classList.add('open');
+            song.play(); // Song starts on OPEN
+            createHearts();
+        });
+
+        closeBtn.addEventListener('click', () => {
+            clickSound.play();
+            container.classList.remove('open');
+            song.pause(); // Song stops on CLOSE
+            song.currentTime = 0; // Resets song to the beginning
+            createHearts();
+        });
+    </script>
+</body>
+</html>
